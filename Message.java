@@ -16,8 +16,6 @@ public class Message {
         this.type = type;
         this.timestamp = timestamp;
     }
-    
-    // Getters and setters
     public int getMessageId() {
         return messageId;
     }

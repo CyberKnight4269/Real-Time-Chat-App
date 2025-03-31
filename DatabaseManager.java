@@ -35,7 +35,7 @@ public class DatabaseManager {
                     "sender_id INT NOT NULL, " +
                     "receiver_id INT NOT NULL, " +
                     "content TEXT NOT NULL, " + 
-                    "type VARCHAR(10) NOT NULL, " + // TEXT or IMAGE
+                    "type VARCHAR(10) NOT NULL, " + 
                     "timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
                     "FOREIGN KEY (sender_id) REFERENCES users(user_id), " +
                     "FOREIGN KEY (receiver_id) REFERENCES users(user_id)" +
@@ -99,7 +99,7 @@ public class DatabaseManager {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
             pstmt.setString(1, username);
-            pstmt.setString(2, password); // In a real app, verify against hashed password
+            pstmt.setString(2, password); 
             
             ResultSet rs = pstmt.executeQuery();
             

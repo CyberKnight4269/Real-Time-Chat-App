@@ -13,7 +13,6 @@ public class User {
         this.profilePicPath = profilePicPath;
     }
     
-    // Getters and setters
     public int getUserId() {
         return userId;
     }

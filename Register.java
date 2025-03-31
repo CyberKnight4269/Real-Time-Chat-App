@@ -9,7 +9,7 @@ public class Register extends JFrame {
     private JTextField usernameField, emailField;
     private JPasswordField passwordField, confirmPasswordField;
     private JLabel profileImageLabel;
-    private String profileImagePath = "profile_pics/profile.png"; // Default image
+    private String profileImagePath = "profile_pics/profile.png"; //no need
     private DatabaseManager dbManager;
     
     public Register() {
@@ -25,13 +25,11 @@ public class Register extends JFrame {
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         mainPanel.setBackground(Color.WHITE);
         
-        // App Title
         JLabel titleLabel = new JLabel("Create New Account");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titleLabel.setBorder(new EmptyBorder(0, 0, 20, 0));
         
-        // Profile Image
         JPanel imagePanel = new JPanel();
         imagePanel.setBackground(Color.WHITE);
         imagePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -53,27 +51,22 @@ public class Register extends JFrame {
         
         imagePanel.add(profileImageLabel);
         
-        // Username Field
         JLabel usernameLabel = new JLabel("Username:");
         usernameField = new JTextField(20);
         usernameField.setMaximumSize(new Dimension(Integer.MAX_VALUE, usernameField.getPreferredSize().height));
         
-        // Email Field
         JLabel emailLabel = new JLabel("Email:");
         emailField = new JTextField(20);
         emailField.setMaximumSize(new Dimension(Integer.MAX_VALUE, emailField.getPreferredSize().height));
         
-        // Password Field
         JLabel passwordLabel = new JLabel("Password:");
         passwordField = new JPasswordField(20);
         passwordField.setMaximumSize(new Dimension(Integer.MAX_VALUE, passwordField.getPreferredSize().height));
         
-        // Confirm Password Field
         JLabel confirmPasswordLabel = new JLabel("Confirm Password:");
         confirmPasswordField = new JPasswordField(20);
         confirmPasswordField.setMaximumSize(new Dimension(Integer.MAX_VALUE, confirmPasswordField.getPreferredSize().height));
         
-        // Register Button
         JButton registerButton = new JButton("Register");
         registerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         registerButton.setBackground(new Color(30, 144, 255));
@@ -85,7 +78,6 @@ public class Register extends JFrame {
             }
         });
         
-        // Login Link
         JPanel loginPanel = new JPanel();
         loginPanel.setBackground(Color.WHITE);
         loginPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -103,7 +95,6 @@ public class Register extends JFrame {
         loginPanel.add(loginLabel);
         loginPanel.add(loginButton);
         
-        // Add components to main panel
         mainPanel.add(titleLabel);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         mainPanel.add(imagePanel);
@@ -141,7 +132,6 @@ public class Register extends JFrame {
             File selectedFile = fileChooser.getSelectedFile();
             profileImagePath = selectedFile.getAbsolutePath();
             
-            // Update image preview
             ImageIcon newIcon = new ImageIcon(profileImagePath);
             Image scaledImage = newIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
             profileImageLabel.setIcon(new ImageIcon(scaledImage));
@@ -154,7 +144,6 @@ public class Register extends JFrame {
         String password = new String(passwordField.getPassword());
         String confirmPassword = new String(confirmPasswordField.getPassword());
         
-        // Basic validation
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all fields", "Registration Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -176,7 +165,6 @@ public class Register extends JFrame {
             return;
         }
         
-        // Create user
         User newUser = new User(0, username, email, password, profileImagePath);
         boolean success = dbManager.registerUser(newUser);
         

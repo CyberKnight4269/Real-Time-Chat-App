@@ -21,23 +21,19 @@ public class Login extends JFrame {
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         mainPanel.setBackground(Color.WHITE);
         
-        // App Title
         JLabel titleLabel = new JLabel("Chat Application");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titleLabel.setBorder(new EmptyBorder(0, 0, 20, 0));
         
-        // Username Field
         JLabel usernameLabel = new JLabel("Username:");
         usernameField = new JTextField(20);
         usernameField.setMaximumSize(new Dimension(Integer.MAX_VALUE, usernameField.getPreferredSize().height));
         
-        // Password Field
         JLabel passwordLabel = new JLabel("Password:");
         passwordField = new JPasswordField(20);
         passwordField.setMaximumSize(new Dimension(Integer.MAX_VALUE, passwordField.getPreferredSize().height));
         
-        // Login Button
         JButton loginButton = new JButton("Login");
         loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         loginButton.setBackground(new Color(30, 144, 255));
@@ -49,7 +45,6 @@ public class Login extends JFrame {
             }
         });
         
-        // Register Link
         JPanel registerPanel = new JPanel();
         registerPanel.setBackground(Color.WHITE);
         registerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -67,7 +62,6 @@ public class Login extends JFrame {
         registerPanel.add(registerLabel);
         registerPanel.add(registerButton);
         
-        // Add components to main panel
         mainPanel.add(titleLabel);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         mainPanel.add(usernameLabel);
@@ -81,7 +75,6 @@ public class Login extends JFrame {
         mainPanel.add(loginButton);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 15)));
         mainPanel.add(registerPanel);
-        
         add(mainPanel);
     }
     
@@ -97,7 +90,6 @@ public class Login extends JFrame {
         User user = dbManager.authenticateUser(username, password);
         
         if (user != null) {
-            // Successful login
             this.dispose();
             SwingUtilities.invokeLater(() -> new Chat(user).setVisible(true));
         } else {
@@ -119,7 +111,6 @@ public class Login extends JFrame {
         }
         
         SwingUtilities.invokeLater(() -> {
-            // Create database tables if they don't exist
             DatabaseManager dbManager = new DatabaseManager();
             dbManager.createTablesIfNotExist();
             
